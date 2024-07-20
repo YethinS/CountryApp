@@ -1,0 +1,43 @@
+.countryWrapper {
+    padding: 17px 18px;
+    // height: 20% !important;
+    // width: 45%;
+    border: 2px solid #3E3E3E;
+    // min-height: 10px !important;
+    width: 48%;
+    // flex: 1;
+}
+
+.countryContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 28px;
+
+
+}
+
+.imageWrapper {
+    height: 100%;
+    width: 30% !important;
+
+    img{
+        height: 100% !important;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+}
+
+
+.countryName{
+    font-weight: 600;
+    font-size: 24px;
+    color: #3D3D3D;
+}
+
+.continent {
+    font-weight: 400;
+    font-size: 16px;
+    color: #6F6F6F;
+}
