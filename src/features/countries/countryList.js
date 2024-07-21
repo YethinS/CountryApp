@@ -23,14 +23,18 @@ export const countryList = createSlice({
         },
 
         countryListAsia: (state, action) => {
-           state.countries =  state.countries.filter((country) => country.region === 'Asia')
+           state.filteredCountries =  state.countries.filter((country) => country.region === 'Asia')
         },
 
         countryListEurope: (state, action) => {
-            state.countries = state.countries.filter((country) => country.region === 'Europe')
+            state.filteredCountries = state.countries.filter((country) => country.region === 'Europe')
+        },
+
+        countryAll: (state, action) => {
+            state.filteredCountries = state.countries
         }
     }
 })
 
-export const {addCountryList, countryListAsia, countryListEurope} = countryList.actions
+export const {addCountryList, countryListAsia, countryListEurope, countryAll} = countryList.actions
 export default countryList.reducer
