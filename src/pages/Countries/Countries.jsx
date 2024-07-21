@@ -6,22 +6,36 @@ import Country from "../../components/Country/Country";
 import { FacebookIcon, GoogleIcon, LinkedInIcon, TwitterIcon } from "../../assets/icons";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addCountryList } from "../../features/countries/countryList";
 
 function Countries() {
 
     const [countryList, setCountryList ] = useState([])
+    const dispatch = useDispatch()
+    const countries = useSelector(state => state.countries)
+    console.log('Countries : ',countries)
+    
 
     const getCountryList = () => {
         axios.get(' https://restcountries.com/v2/all?fields=name,region,flag')
             .then((rsp) => {
                 setCountryList(rsp?.data)
+               
+                dispatch(addCountryList(rsp?.data))
             })
             .catch((err) => console.log(err))
     }
 
     useEffect(() => {
         getCountryList()
+        // if(countryList.length !== 0){
+        //   dispatch(addCountryList(countryList))
+        // }
+        
     },[])
+
+    
   return (
     <>
     <Header />
@@ -29,7 +43,7 @@ function Countries() {
         
       <div className={Styles.countryList}>
         
-        {countryList?.map((country) => <Country data={country} />)}
+        {countries?.map((country) => <Country data={country} />)}
         
       </div>
       <div className={Styles.footer}>

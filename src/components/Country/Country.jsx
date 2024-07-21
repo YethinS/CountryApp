@@ -3,7 +3,7 @@ import Styles from "./country.module.scss";
 import DefaultImage from "../../assets/images/DefaultImage.png";
 
 function Country(props) {
-  console.log("props: ", props);
+  
   return (
     <div className={Styles.countryWrapper}>
       <div className={Styles.countryContainer}>
