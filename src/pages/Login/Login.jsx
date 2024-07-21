@@ -9,8 +9,45 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from "../../assets/icons";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Login() {
+  const [login, setLogin] = useState(false)
+  let data = {
+    "userName" : "User",
+    "password" : "User@123"
+  }
+
+  const [credentails, setCredentials] = useState({
+    "userName" : '',
+    "password" : ""
+  })
+
+  const handleUserName = (e) => {
+    let userName = e.target.value
+    setCredentials(prevState => ({
+      ...prevState,
+      userName: userName
+    }))
+  }
+
+  const handlePassword = (e) => {
+    let password = e.target.value;
+    setCredentials(prevState => ({
+      ...prevState,
+      password: password
+    }))
+  }
+
+  const handleValidation = () => {
+    if(data.userName === credentails.userName && data.password === credentails.password) {
+      console.log('Validation success...')
+      navigate('/countries')
+    }
+  }
+
+  const navigate = useNavigate()
   return (
     <div className={Styles.loginContainer}>
       <div className={Styles.innerContainer}>
@@ -26,6 +63,7 @@ function Login() {
               type="text"
               placeholder="Username or email"
               className={Styles.input}
+              onChange={handleUserName}
             />
             <br />
             <Form.Control
@@ -33,13 +71,15 @@ function Login() {
               type="password"
               placeholder="Password"
               className={Styles.input}
+              onChange={handlePassword}
             />
             <Form.Check
               type="checkbox"
               label="Keep me signed in"
               className={Styles.checkbox}
+              
             />
-            <Button variant="dark" className={Styles.button}>
+            <Button variant="dark" className={Styles.button} onClick={handleValidation}>
               Sign In
             </Button>
           </div>
