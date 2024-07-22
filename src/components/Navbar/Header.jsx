@@ -23,7 +23,7 @@ function Header() {
     <Navbar sticky="top" className={Styles.navBar}>
       <Container className={Styles.header}>
         <Navbar.Brand className={Styles.navCountry}>Countries</Navbar.Brand>
-        <Nav >
+        <Nav className="me-auto">
           <Nav.Link className={Styles.navText} onClick={countryAllShow}>All</Nav.Link>
           <Nav.Link className={Styles.navText} onClick={handleAsiaRegion}>Asia</Nav.Link>
           <Nav.Link className={Styles.navText} onClick={handleEuropeRegion}>Europe</Nav.Link>
