@@ -3,6 +3,7 @@ import Styles from "./login.module.scss";
 import LoignImage from "../../assets/images/illustration.png";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
+
 import {
   GoogleIcon,
   FacebookIcon,
@@ -11,9 +12,13 @@ import {
 } from "../../assets/icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from 'react-redux'
+import { updateLogin } from '../../features/Login/login'
 
 function Login() {
   const [login, setLogin] = useState(false)
+
+  const dispatch = useDispatch()
   let data = {
     "userName" : "User",
     "password" : "User@123"
@@ -42,7 +47,7 @@ function Login() {
 
   const handleValidation = () => {
     if(data.userName === credentails.userName && data.password === credentails.password) {
-      console.log('Validation success...')
+      dispatch(updateLogin(true))
       navigate('/countries')
     }
   }

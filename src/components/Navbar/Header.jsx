@@ -20,7 +20,7 @@ function Header() {
     dispatch(countryAll())
   }
   return (
-    <Navbar  bg="light" data-bs-theme="light" sticky="top">
+    <Navbar sticky="top" className={Styles.navBar}>
       <Container className={Styles.header}>
         <Navbar.Brand className={Styles.navCountry}>Countries</Navbar.Brand>
         <Nav >

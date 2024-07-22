@@ -14,7 +14,6 @@ function Countries() {
     const [countryList, setCountryList ] = useState([])
     const dispatch = useDispatch()
     const countries = useSelector(state => state.filteredCountries)
-    console.log('Countries : ',countries)
     
 
     const getCountryList = () => {
