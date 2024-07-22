@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux'
 import { updateLogin } from '../../features/Login/login'
 
 function Login() {
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(null)
 
   const dispatch = useDispatch()
   let data = {
@@ -35,6 +35,10 @@ function Login() {
       ...prevState,
       userName: userName
     }))
+
+    if(userName === "") {
+      setLogin(null)
+    }
   }
 
   const handlePassword = (e) => {
@@ -48,8 +52,11 @@ function Login() {
   const handleValidation = () => {
     if(data.userName === credentails.userName && data.password === credentails.password) {
       dispatch(updateLogin(true))
+      setLogin(true)
       navigate('/countries')
     }
+    setLogin(false)
+    
   }
 
   const navigate = useNavigate()
@@ -78,6 +85,7 @@ function Login() {
               className={Styles.input}
               onChange={handlePassword}
             />
+           {login === false && <p>Incorrect credentials</p>} 
             <Form.Check
               type="checkbox"
               label="Keep me signed in"
